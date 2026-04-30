@@ -36,7 +36,7 @@
 | 2<br />10<br />5<br />0<br />-4   | -4<br />10       |
 | 5<br />2<br />2<br />-10<br />5   | -10<br />5       |
 
-5. Escreva uma função que recebe uma palavra P e uma letra L como parâmetros e que retorna a quantidade de ocorrências de L em P. Escreva pelo menos três testes da função no programa principal.
+5. Escreva uma função que recebe uma palavra `palavra` e uma letra `caractere` como parâmetros e que retorna a quantidade de ocorrências de `caractere` em `palavra`. Escreva pelo menos três testes da função no programa principal.
 
 | Exemplos de valores de parâmetros | Retorno esperado |
 | --------------------------------- | ---------------- |
@@ -44,7 +44,7 @@
 | CASA<br />s                       | 0                |
 | Caju<br />b                       | 0                |
 
-6. Escreva uma função que recebe um inteiro n ≥ 0 como parâmetro e que retorna a soma dos inteiros de 1 a n. Escreva pelo menos três testes da função no programa principal.
+6. Escreva uma função que recebe um inteiro `numero` ≥ 0 como parâmetro e que retorna a soma dos inteiros de 1 a `numero`. Escreva pelo menos três testes da função no programa principal.
 
 | Exemplos de valores de parâmetros | Retorno esperado |
 | --------------------------------- | ---------------- |
@@ -53,14 +53,14 @@
 | 1                                 | 1                |
 | 0                                 | 0                |
 
-7. Escreva uma função que recebe dois números reais, base e altura, e retorna a área de um triângulo. Escreva pelo menos dois testes da função no programa principal.
+7. Escreva uma função que recebe dois números reais, `base` e `altura`, e retorna a área de um triângulo. Escreva pelo menos dois testes da função no programa principal.
 
 | Exemplos de valores de parâmetros | Retorno esperado |
 | --------------------------------- | ---------------- |
 | 6.0<br />4.0                      | 12.0             |
 | 3.0<br />5.0                      | 7.5              |
 
-8. Escreva uma função que recebe um número real em graus Celsius e retorna o equivalente em Fahrenheit. A fórmula de conversão é: `F = C * 9/5 + 32`. Escreva pelo menos dois testes da função no programa principal.
+8. Escreva uma função que recebe um número real em graus Celsius e retorna o equivalente em Fahrenheit. A fórmula de conversão é: `fahrenheit = (celcius * 9 / 5) + 32`. Escreva pelo menos dois testes da função no programa principal.
 
 | Exemplos de valores de parâmetros | Retorno esperado |
 | --------------------------------- | ---------------- |
@@ -86,9 +86,7 @@
 
 ---
 
-## Parte 2
-
-11. Escreva uma função que recebe um inteiro n > 1 e retorna `True` se n for primo ou `False` caso contrário. Escreva pelo menos três testes da função no programa principal.
+11. Escreva uma função que recebe um inteiro `numero` > 1 e retorna `True` se `numero` for primo ou `False` caso contrário. Escreva pelo menos três testes da função no programa principal.
 
 | Exemplos de valores de parâmetros | Retorno esperado |
 | --------------------------------- | ---------------- |
@@ -97,7 +95,7 @@
 | 9                                 | False            |
 | 13                                | True             |
 
-12. Escreva uma função que recebe um inteiro n ≥ 0 e retorna o fatorial de n. Lembre que 0! = 1. Escreva pelo menos três testes da função no programa principal.
+12. Escreva uma função que recebe um inteiro `numero` ≥ 0 e retorna o fatorial de `numero`. Lembre que `0! = 1`. Escreva pelo menos três testes da função no programa principal.
 
 | Exemplos de valores de parâmetros | Retorno esperado |
 | --------------------------------- | ---------------- |
@@ -175,8 +173,6 @@
 | 3.0<br />4.0<br />5.0             | Escaleno         |
 
 ---
-
-## Parte 3
 
 21. Qual é a saída do programa Python a seguir?
 
