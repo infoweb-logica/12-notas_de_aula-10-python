@@ -11,7 +11,8 @@
 
 ---
 ## Notas de aula
-Resumo da [parte 1](/11-funções-parte_1.pdf)
+
+### Resumo da [parte 1](/11-funções-parte_1.pdf)
 1. **Funções**: uma função define um bloco de código que pode ser reutilizado por programas
 2. **Chamada de função**: momento que uma função está sendo **utilizada**
 3. **Anatomia de uma função**: foco na chamada de função
@@ -29,12 +30,132 @@ Resumo da [parte 1](/11-funções-parte_1.pdf)
      1. função retorne um valor para o programa principal ao invés de realizar uma impressão.
      2. O retorno de um valor é feito com a instrução return.
 
-Resumo da [parte 2](/11-funções-parte_2.pdf)
-1. FIXME
+### Resumo da [parte 2](/11-funções-parte_2.pdf)
+1. Escopo de variáveis
+   - **locais**: 
+      - São as variáveis definidas no corpo de uma função e os seus parâmetros.
+      - Variáveis locais são visíveis apenas no próprio corpo da função.
+      - O valor de uma variável local é reinicializado toda vez que a função é chamada.
+   - **globais**: 
+      - São as variáveis definidas no programa principal.
+      - Variáveis globais são visíveis para o programa principal bem como para as funções.
+      - **EVITE USAR** porque aumenta a probabilidade de ocorrência de bugs em programas.
+2. Funções
+   - definição da função
+     - Instrução `global`: permite que uma variável dentro da função acesse a variável com escopo `global`
+     - Instrução `return`: permite que a função seja encerrada e retorne valores para o chamador
+     - Parâmetros opcionais: são parâmetros cujo valor não precisa ser informado no momento em que uma função é chamada.
+   - chamada da função
+     - chamada com parâmetro nomeados: 
+       - ao chamar uma função podemos informar os valores dos parâmetros em conjunto, ou não, dos nomes dos parâmetros
+       - parâmetros obrigatórios podem ter seus nomes omitidos, mas nesse caso deve-se seguir a ordem de definição dos parâmetros obrigatórios.
+
+### Exemplos de códigos python
+
+Acessar variáveis locais fora da função.
+```python
+def soma(a, b):
+  s = a + b
+  return s
+
+x, y = 5, 8
+sm = soma(x, y)
+print(sm)
+print(a) # gera erro
+print(b) # gera erro
+print(s) # gera erro
+``` 
+
+Acessar variável global dentro de uma função. **EVITE**
+```python
+def soma(a):
+  return x + a
+
+x = 5
+y = soma(11)
+print(y) # 16
+```
+
+Variável local e global com o mesmo identificador (nome).
+```python
+def soma(a, b):
+  s = a + b
+  return s
+
+a, b, s = 5, 8, 0
+sm = soma(11, 4)
+print(sm) # 15
+print(a)  # 5
+print(b)  # 8
+print(s)  # 0
+```
+
+Uso da instrução `gloval`. **EVITE**
+```python
+def muda_x():
+  global x
+  x = "Bola"
+
+x = "Casa"
+print(x)  # Casa
+muda_x()
+print(x)  # Bola
+```
+
+Uso da instrução `return`.
+```python
+def avaliar(x):
+  if x == 1:
+    return 1
+  return 0
+
+print(avaliar(1))
+print(avaliar(3))
+```
+
+Definição de parâmetros opcioniais.
+```python
+def linha(n, caractere='*'):
+  print(caractere * n)
+
+linha(10)
+linha(15, '-')
+linha()      	 # gera erro
+```
+`
+Chamada com parâmetros nomeados.
+```python
+def a_divisivel_por_b(a, b):
+  print(a % b == 0)
+
+a_divisivel_por_b(10, 2) 	    # True
+a_divisivel_por_b(2, 10) 	    # False
+a_divisivel_por_b(a=20, b=5)    # True
+a_divisivel_por_b(b=3, a=15)    # True
+a_divisivel_por_b(2, b=10)      # False
+a_divisivel_por_b(b=3, 15)      # Gera erro
+a_divisivel_por_b(2, a=3)       # Gera erro
+a_divisivel_por_b(2, a=3, b=5)  # Gera erro
+```
+
+```python
+def a_divisivel_por_b(a, b, adorno=''):
+  print(adorno, a % b == 0, adorno)
+
+a_divisivel_por_b(10, 2)                  # True
+a_divisivel_por_b(2, 10) 	              # False
+a_divisivel_por_b(2, 10, '*'	)             # False
+a_divisivel_por_b(10, 2, adorno='*')      # * True *
+a_divisivel_por_b(2, 10, adorno='*')      # * False *
+a_divisivel_por_b(b=5, a=20)              # True
+a_divisivel_por_b(a=15, b=3, adorno='*')  # * True *
+a_divisivel_por_b(10, adorno='*', b=5)    # * True *
+a_divisivel_por_b(a=10, 2) 	              # Gera erro
+```
 
 ---
 ## Exercícios [Lista de exercícios](/lista.md)
-**Parte 1**
+### **Parte 1**
 1. Escreva uma função com três parâmetros inteiros e que retorna a soma destes parâmetros. Escreva pelo menos dois testes da função no programa principal.
 
 | Exemplos de valores de parâmetros | Retorno esperado |
@@ -152,6 +273,117 @@ sequencia(3, 4)
 
 ``` 
 
+---
 
-**Parte 2**
-1. FIXME
+### **Parte 2**
+1. Qual é saída do programa Python a seguir?
+```python
+def funcao(a):
+   b = a * 2 + 1
+   return b
+
+b = 10
+a = funcao(b)
+print(a)
+print(b)
+
+```
+
+2. Qual é saída do programa Python a seguir?
+```python
+def funcao(x):
+   if x == 0:
+      x = 1
+   y = 5 / x
+   return y
+
+x = 5
+y = funcao(x)
+print(x)
+print(y)
+y = -5
+funcao(y)
+print(x)
+print(y)
+
+```
+
+3. Qual é saída do programa Python a seguir?
+
+```python
+def funcao(y):
+   if y < 0:
+      x = 1
+      return y
+   return y + 2
+
+x = 0
+w = funcao(10)
+print(x)
+print(w)
+w = funcao(-3)
+print(x)
+print(w)
+
+```
+
+4. Qual é saída do programa Python a seguir?
+
+```python
+def funcao(y):
+   global x
+   if y < 0:
+      x = 1
+      return y
+   return y + 2
+
+x = 0
+w = funcao(10)
+print(x)
+print(w)
+w = funcao(-3)
+print(x)
+print(w)
+
+```
+
+5. Qual é saída do programa Python a seguir?
+
+```python
+def funcao(i):
+   if -3 < i < -1:
+      return 'Z'
+   elif i == 0:
+      return 'Y'
+   x = i % 3
+   if x == 0:
+      return 'T'
+   elif x == 1:
+      return 'U'
+   return 'W'
+
+print(funcao(3))
+print(funcao(5))
+print(funcao(0))
+print(funcao(4))
+print(funcao(-10))
+print(funcao(-2))
+
+```
+
+6. Considerando as chamadas a seguir e a implementação apresentada no quadro, indique o valor de retorno da chamada de função ou se a chamada gera um erro.
+   1. `funcao(1, 2)`
+   2. `funcao(1, 2, 6)`
+   3. `funcao(10)`
+   4. `funcao(3, 2, d=10)`
+   5. `funcao(3, 2, d=10, c=0)`
+   6. `funcao(d=10, c=0, 2, 1)`
+   7. `funcao(a=10, 0, 2, 1)`
+   8. `funcao(a=10, d=3, c=1, b=5)`
+   9. `funcao(5, b=3, d=1, c=2)`
+
+```python
+def funcao(a, b, c=3, d=0):
+   return a + b + c + d
+
+```
